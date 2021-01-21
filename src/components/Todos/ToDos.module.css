@@ -1,4 +1,15 @@
+.container {
+  overflow-y: hidden;
+  position: relative;
+  height: 100%;
+}
+
 .todos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 0 10px;
@@ -11,8 +22,8 @@
   height: 40px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
   border-radius: 6px;
-  padding: 0 10px;
-  margin-bottom: 9px;
+  padding: 10px;
+  margin-bottom: 10px;
   background-color: #F5F5F6;
 }
 
@@ -22,5 +33,6 @@
 }
 
 .todos .completed {
+  background-image: linear-gradient(255deg, #1c571a, #1db41d);
   text-decoration: line-through;
 }

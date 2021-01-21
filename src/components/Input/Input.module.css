@@ -35,13 +35,17 @@
   top: 20px;
 }
 
-.input input[nav-selected="true"] ~ label {
+.input input ~ label {
   position: absolute;
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 12px;
+  font-size: 15px;
   color: #9b9b9b;
+}
+
+.input input[nav-selected="true"] ~ label {
+  font-size: 12px;
 }
 
 .input input[nav-selected="true"] ~ label {

@@ -31,10 +31,12 @@ export const useNavigation = () => {
       case 'ArrowDown':
         const goToFirstElement = currentIndex + 1 > allElements.length - 1;
         setIndex = goToFirstElement ? 0 : currentIndex + 1;
+        scrollList(allElements[setIndex], setIndex);
         return selectElement(allElements[setIndex] || allElements[0], setIndex);
       case 'ArrowUp':
         const goToLastElement = currentIndex === 0;
         setIndex = goToLastElement ? allElements.length - 1 : currentIndex - 1;
+        scrollList(allElements[setIndex], setIndex);
         return selectElement(allElements[setIndex] || allElements[0], setIndex);
       default:
         break;
@@ -48,7 +50,6 @@ export const useNavigation = () => {
         element.setAttribute("nav-selected", element === selectElement);
         element.setAttribute("nav-index", index);
         if (selectThisElement) {
-          selectThisElement.scrollIntoView(true);
           if (element.nodeName === 'INPUT') {
             element.focus();
           } else {
@@ -59,6 +60,15 @@ export const useNavigation = () => {
       setCurrent({ type: selectElement.tagName, index: setIndex });
     } else {
       setNavigation(0);
+    }
+  }
+
+  const scrollList = (element, index) => {
+    const parent = element.parentElement;
+    if (index > 2) {
+      parent.style.top = - ( (index - 3) * 50)  + 'px';
+    } else if (index > 0 && index <= 2) {
+      parent.style.top = 0;
     }
   }
 
